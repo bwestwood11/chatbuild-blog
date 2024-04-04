@@ -54,6 +54,9 @@ export default function Post({ params }: { params: { slug: string } }) {
         {blog.poster &&  <Image width={1000} height={1000} src={blog.poster} alt='image' className='w-full object-cover mb-3' />}
        
         <RenderMdx blog={blog} />
+
+        <hr />
+        <div>{blog.tags?.map(tag => <span>#{tag}</span>)}</div>
       </article>
       <details
         className="border-[1px]  xl:block hidden w-[300px] py-4 border-solid border-dark dark:border-light text-dark dark:text-light rounded-lg  p-4 xl:sticky top-6 max-h-[80vh] overflow-hidden overflow-y-auto"

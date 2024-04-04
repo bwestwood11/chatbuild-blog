@@ -10,6 +10,7 @@ import Link, { LinkProps } from "next/link";
 
 export const mdxComponents  = {
   a: ({ ...props }: any) => <Link  {...props} />,
+  
   Image,
   Button,
 };
