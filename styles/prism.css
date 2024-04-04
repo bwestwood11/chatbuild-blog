@@ -140,3 +140,37 @@ code[data-line-numbers-max-digits="3"] > [data-line]::before {
 pre::-webkit-scrollbar {
   width: 0px;
 }
+
+.prose  :where(h2, h3, h4, h5, h6)  {
+  @apply !text-primary relative
+}
+
+.prose  :where(h2, h3, h4, h5, h6):hover>a  {
+  opacity:1;
+}
+.prose  :where(h2, h3, h4, h5, h6):hover>a  {
+  opacity:1;
+}
+
+.prose  :where(h2, h3, h4, h5, h6)>a svg{
+  @apply size-4 lg:size-5 text-primary
+}
+
+.prose  :where(h2, h3, h4, h5, h6)>a{
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  -moz-box-pack: center;
+  justify-content: center;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  bottom: 0px;
+  margin-top: auto;
+  margin-bottom: auto;
+  transform: translateX(-150%);
+  transition: opacity 250ms;
+  opacity: 0;
+  scroll-margin-top: 128px;
+}
+

@@ -7,10 +7,11 @@ import { Button } from "./ui/button";
 import { Blog } from "contentlayer/generated";
 import '@/styles/prism.css';
 import Link, { LinkProps } from "next/link";
+import { InvisibleHeading } from "./mdx/InvisibleHeading";
 
 export const mdxComponents  = {
   a: ({ ...props }: any) => <Link  {...props} />,
-  
+  InvisibleHeading,
   Image,
   Button,
 };

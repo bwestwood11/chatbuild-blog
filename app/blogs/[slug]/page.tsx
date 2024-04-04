@@ -5,6 +5,7 @@ import { useMDXComponent } from 'next-contentlayer/hooks'
 import RenderMdx, { mdxComponents } from '@/components/mdxComponents'
 import { FormatTime } from '@/lib/utils'
 import Image from 'next/image'
+import { InvisibleHeading } from '@/components/mdx/InvisibleHeading'
 
 
 
@@ -29,9 +30,8 @@ export const generateMetadata = async ({
 export default function Post({ params }: { params: { slug: string } }) {
   const blog = allBlogs.find((post) => post._raw.flattenedPath === params.slug)
   if (!blog) notFound()
-  const MDXContent = useMDXComponent(blog.body.code)
   return (
-    <div className='flex container max-md:px-8 py-8 scroll-m-10 w-full '>
+    <div className='flex container max-md:px-8 py-8 scroll-m-10 w-full  '>
       <article className="mx-auto flex-1  max-w-3xl  w-full  ">
         <div className="mb-8 text-left text-foreground">
           <time dateTime={blog.date} className="mb-1 text-xs text-gray-600">
@@ -58,13 +58,14 @@ export default function Post({ params }: { params: { slug: string } }) {
         <hr />
         <div>{blog.tags?.map(tag => <span>#{tag}</span>)}</div>
       </article>
-      <details
+
+
+      <div
         className="border-[1px]  xl:block hidden w-[300px] py-4 border-solid border-dark dark:border-light text-dark dark:text-light rounded-lg  p-4 xl:sticky top-6 max-h-[80vh] overflow-hidden overflow-y-auto"
-        open
       > 
-        <summary className="text-lg font-semibold capitalize cursor-pointer">
-          Table Of Content
-        </summary>
+        <p className="text-lg font-semibold capitalize cursor-pointer font-league tracking-widest  ">
+          TABLE OF CONTENT
+        </p>
         <ul className="mt-4 font-in text-sm ">
           {blog.toc.map((heading: any) => {
             return (
@@ -72,10 +73,10 @@ export default function Post({ params }: { params: { slug: string } }) {
                 <a
                   href={`#${heading.slug}`}
                   data-level={heading.level}
-                  className="data-[level=two]:pl-0  data-[level=two]:pt-2
+                  className="data-[level=two]:pl-0 text-gray-500 data-[level=two]:text-white  data-[level=two]:pt-1
                                        data-[level=two]:border-t border-solid border-dark/40
-                                       data-[level=three]:pl-4
-                                       sm:data-[level=three]:pl-6
+                                       data-[level=three]:pl-2
+                                       sm:data-[level=three]:pl-4
                                        flex items-center justify-start
                                        "
                 >
@@ -90,7 +91,7 @@ export default function Post({ params }: { params: { slug: string } }) {
             );
           })}
         </ul>
-      </details>
+      </div>
     </div>
   )
 }
