@@ -5,16 +5,10 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
 
-export const wordCountFromHTML = (html: string) => {
-  const text = new DOMParser().parseFromString(html, "text/html").body.textContent
-  return text?.split(/\s+/).length || 0
+export const FormatTime = (date:string) => {
+  return new Date(date).toLocaleDateString('en-US', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
+  })
 }
-
-export const readingTimeFromHTML = (html: string) => {
-  const words = wordCountFromHTML(html)
-  const wordsPerMinute = 200
-  const minutes = words / wordsPerMinute
-  return Math.ceil(minutes)
-}
-
-

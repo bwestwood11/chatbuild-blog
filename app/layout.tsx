@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, League_Spartan } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider"
 import Navbar from "@/components/navbar";
 
 const inter = Inter({ subsets: ["latin"] });
+const league = League_Spartan({ subsets: ["latin"],variable:"--font-league" });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -17,8 +18,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
+    <html lang="en" className=" scroll-smooth scroll-m-10">
+      <body className={league.variable}>
         
       <ThemeProvider
             attribute="class"

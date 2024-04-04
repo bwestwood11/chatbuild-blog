@@ -1,3 +1,6 @@
+* {
+  scroll-margin-top:4rem ;
+}
 pre {
   overflow-x: auto;
   padding: 1rem 0;
