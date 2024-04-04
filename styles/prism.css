@@ -1,0 +1,139 @@
+pre {
+  overflow-x: auto;
+  padding: 1rem 0;
+}
+
+pre [data-line] {
+  padding: 0 1rem;
+}
+
+code {
+  counter-reset: line;
+}
+
+code > [data-line]::before {
+  counter-increment: line;
+  content: counter(line);
+
+  /* Other styling */
+  display: inline-block;
+  width: 1rem;
+  margin-right: 2rem;
+  text-align: right;
+  color: gray;
+}
+
+code[data-line-numbers-max-digits="2"] > [data-line]::before {
+  width: 2rem;
+}
+
+code[data-line-numbers-max-digits="3"] > [data-line]::before {
+  width: 3rem;
+}
+
+.dark .ce-block--selected .ce-block__content,
+.dark .ce-inline-toolbar,
+.dark .codex-editor--narrow .ce-toolbox,
+.dark .ce-conversion-toolbar,
+.dark .ce-settings,
+.dark .ce-settings__button,
+.dark .ce-toolbar__settings-btn,
+.dark .cdx-button,
+.dark .ce-popover,
+.dark .ce-toolbar__plus:hover {
+  background: theme("colors.popover.DEFAULT");
+  color: inherit;
+  border-color: theme("colors.border");
+}
+
+.dark .ce-inline-tool,
+.dark .ce-conversion-toolbar__label,
+.dark .ce-toolbox__button,
+.dark .cdx-settings-button,
+.dark .ce-toolbar__plus {
+  color: inherit;
+}
+
+.dark .ce-popover__item-icon,
+.dark .ce-conversion-tool__icon {
+  background-color: theme("colors.muted.DEFAULT");
+  box-shadow: none;
+}
+
+.dark .cdx-search-field {
+  border-color: theme("colors.border");
+  background: theme("colors.input");
+  color: inherit;
+}
+
+.dark ::selection {
+  background: theme("colors.accent.DEFAULT");
+}
+
+.dark .cdx-settings-button:hover,
+.dark .ce-settings__button:hover,
+.dark .ce-toolbox__button--active,
+.dark .ce-toolbox__button:hover,
+.dark .cdx-button:hover,
+.dark .ce-inline-toolbar__dropdown:hover,
+.dark .ce-inline-tool:hover,
+.dark .ce-popover__item:hover,
+.dark .ce-conversion-tool:hover,
+.dark .ce-toolbar__settings-btn:hover {
+  background-color: theme("colors.accent.DEFAULT");
+  color: theme("colors.accent.foreground");
+}
+
+.dark .cdx-notify--error {
+  background: theme("colors.destructive.DEFAULT") !important;
+}
+
+.dark .cdx-notify__cross::after,
+.dark .cdx-notify__cross::before {
+  background: white;
+}
+
+[data-rehype-pretty-code-fragment] code {
+  @apply grid min-w-full break-words rounded-none border-0 bg-transparent p-0 text-sm text-black;
+  counter-reset: line;
+  box-decoration-break: clone;
+}
+[data-rehype-pretty-code-fragment] .line {
+  @apply px-4 py-1;
+}
+[data-rehype-pretty-code-fragment] [data-line-numbers] > .line::before {
+  counter-increment: line;
+  content: counter(line);
+  display: inline-block;
+  width: 1rem;
+  margin-right: 1rem;
+  text-align: right;
+  color: gray;
+}
+[data-rehype-pretty-code-fragment] .line--highlighted {
+  @apply bg-slate-300 bg-opacity-10;
+}
+[data-rehype-pretty-code-fragment] .line-highlighted span {
+  @apply relative;
+}
+[data-rehype-pretty-code-fragment] .word--highlighted {
+  @apply rounded-md bg-slate-300 bg-opacity-10 p-1;
+}
+[data-rehype-pretty-code-title] {
+  @apply mt-4 py-2 px-4 text-sm font-medium;
+  
+}
+[data-rehype-pretty-code-title] + pre {
+  @apply mt-0;
+}
+
+
+.highlighted{
+  background: #c8c8ff1a;
+  --tw-border-opacity: 1;
+}
+
+ /* width */
+pre::-webkit-scrollbar {
+  width: 0px;
+}
