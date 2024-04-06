@@ -1,26 +1,38 @@
-"use client"
-import Image from "next/image";
-import React, { HTMLAttributes } from "react";
+import * as React from "react"
+import Image from "next/image"
+import * as runtime from 'react/jsx-runtime'
+import "@/styles/prism.css"
 
-import { useMDXComponent } from "next-contentlayer/hooks";
-import { Button } from "./ui/button";
-import { Blog } from "contentlayer/generated";
-import '@/styles/prism.css';
-import Link, { LinkProps } from "next/link";
-import { InvisibleHeading } from "./mdx/InvisibleHeading";
 
-export const mdxComponents  = {
-  a: ({ ...props }: any) => <Link  {...props} />,
-  InvisibleHeading,
-  Image,
-  Button,
-};
 
-const RenderMdx = ({ blog }: { blog: Blog }) => {
-  const MDXContent = useMDXComponent(blog.body.code);
+const useMDXComponent = (code: string) => {
+  const fn = new Function(code)
+  return fn({ ...runtime }).default
+}
+
+const components = {
+  Image
+}
+
+interface MdxProps {
+  code: string
+  components?: Record<string, React.ComponentType>
+}
+
+export function MDXContent({ code, components }: MdxProps) {
+  const Component = useMDXComponent(code)
+  return <Component components={{ Image, ...components }} />
+}
+
+interface MdxProps {
+  code: string
+}
+
+export function Mdx({ code }: MdxProps) {
+  const Component = useMDXComponent(code)
 
   return (
-    <div className=" prose sm:prose-base text-balance md:prose-lg max-w-full
+    <div className="mdx prose text-foreground   sm:prose-base text-balance md:prose-lg max-w-full
     prose-blockquote:bg-accent/20 
     prose-blockquote:p-2
     prose-blockquote:px-6
@@ -34,10 +46,8 @@ const RenderMdx = ({ blog }: { blog: Blog }) => {
     dark:prose-blockquote:border-accentDark
     dark:prose-blockquote:bg-accentDark/20
     dark:prose-li:marker:text-accentDark
-     font-league">
-      <MDXContent components={mdxComponents} />
+     font-league ">
+      <Component components={components} />
     </div>
-  );
-};
-
-export default RenderMdx;
+  )
+}

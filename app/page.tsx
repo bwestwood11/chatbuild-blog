@@ -1,16 +1,17 @@
 import Link from 'next/link'
 import { allBlogs } from 'contentlayer/generated'
 import { ModeToggle } from '@/components/toggle-button'
- 
+import {  posts } from "#site/content"
+
 export default function Home() {
   return (
     <div className="mx-auto max-w-xl py-8">
       <h1 className="mb-8 text-center text-2xl font-black">Posts</h1>
       <ModeToggle />
-      {allBlogs.map((blog) => (
-        <article key={blog._id} className="mb-8">
+      {posts.map((blog) => (
+        <article key={blog.slug} className="mb-8">
           <h2 className="text-xl">
-            <Link href={blog.url} className="text-blue-700 hover:text-blue-900">
+            <Link href={blog.slug} className="text-blue-700 hover:text-blue-900">
               {blog.title}
             </Link>
           </h2>

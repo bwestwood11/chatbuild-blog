@@ -109,15 +109,7 @@ export const Blog = defineDocumentType(() => ({
     },
   },
 }));
-const codeOptions = {
-  theme: "github-dark",
-  transformers: [
-    transformerNotationDiff(),
-    transformerMetaHighlight(),
-    transformerMetaWordHighlight(),
-    
-  ]
-};
+
 export default makeSource({
   contentDirPath: "blogs",
   documentTypes: [Blog],
