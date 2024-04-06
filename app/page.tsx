@@ -1,5 +1,4 @@
 import Link from 'next/link'
-import { allBlogs } from 'contentlayer/generated'
 import { ModeToggle } from '@/components/toggle-button'
 import {  posts } from "#site/content"
 
