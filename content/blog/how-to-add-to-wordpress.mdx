@@ -1,0 +1,63 @@
+---
+title: How To Add Chabot Widget In Wordpress?
+date: 2024-04-08
+description: Integrate a Chatbuild.io chatbot into your WordPress site effortlessly for enhanced user engagement and support.
+hostedcover: https://images.unsplash.com/photo-1712079679970-bb45e9ef5b2a?q=80&w=2054&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+category: help
+tags:
+  - productivity
+  - help
+  - chatbots
+authors:
+  - Bwestwood
+  - Diwanshu
+---
+
+
+Great choice on adding a chatbot to your WordPress website! Chatbots can significantly enhance user experience and engagement. If you’re wondering how to seamlessly integrate one into your WordPress site, you’re in the right place. Today, we’ll walk you through the process step by step using ChatBuild.io.
+
+## Step 1: Sign Up on ChatBuild.io
+Head over to [ChatBuild AI](https://www.chatbuild.io/)
+ and sign up for an account. Don’t worry; it’s quick and easy!
+
+## Step 2: Create Your Chatbot
+Once you’ve signed up, it’s time to create your chatbot. ChatBuild.io offers a user-friendly interface to help you craft the perfect chatbot for your website.
+
+## Step 3: Get Your Script Tag
+After creating your chatbot, you’ll receive a script tag. This tag is essential as it enables your chatbot to function seamlessly on your WordPress site. It should look something like this:
+
+```html
+<div id="chatbot"></div>
+<script src="https://cdn.jsdelivr.net/gh/bwestwood11/chatbot-widget/bundle/index1.js"></script>
+<script>
+    Chatbot.mount(document.getElementById('chatbot'), {
+        api_key: "Your_api_Key"
+    })
+    Chatbot.loadCss("https://cdn.jsdelivr.net/gh/bwestwood11/chatbot-widget/bundle/index1.css")
+</script>
+```
+
+## Step 4: Add the Script to Your WordPress Page
+
+### Navigate To Wordpress
+Navigate to ```Pages > All``` Pages in your WordPress dashboard.
+
+
+### Edit The Page 
+- Choose the page you want to add the chatbot to. For demonstration, let’s say it’s the “Sample Page.”
+- Click on Edit for the chosen page.
+
+### Add Script to the page
+- Click on Add Button at to top left corner
+- Select Custom HTML.
+- Paste the script tag you received from ChatBuild.io.
+
+### Publish
+Look to the top right corner of the page editor; you’ll see a blue button labeled Publish or Update . Click on that to save your changes.
+
+
+## Step 5: Preview Your Site
+
+Now that you’ve added the chatbot script to your page, it’s time to see it in action! Click on the Preview button to check out your website with the newly integrated chatbot.
+
+And there you have it! With just a few simple steps, you’ve successfully added a chatbot to your WordPress website using ChatBuild.io. Enjoy engaging with your visitors in a whole new way!
