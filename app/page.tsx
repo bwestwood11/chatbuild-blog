@@ -4,6 +4,8 @@ import CardComponent from './_components/Card'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { categories } from '@/lib/constants'
 import { getBlogByCategory } from '@/lib/blogsUtils'
+import { MotionDiv } from '@/components/motion'
+import { loadingVariants } from '@/lib/animations'
 
 export default function Home() {
   return (
@@ -35,18 +37,21 @@ const PostsGrid = ({ category }: { category: categories }) => {
   if (posts.length <= 0) {
     return (
       <div className='post-grid' >
-        <div className='flex flex-col items-center justify-center py-20 '>
+        <MotionDiv initial="initial"
+          animate="animate"
+          exit="exit"
+          variants={loadingVariants} className='flex flex-col items-center justify-center py-20 '>
           <h1 className="text-left text-3xl font-black">No posts found</h1>
           <p className=' text-gray-600 mb-4'>Latest news and updates and Help from Chatbuild Ai</p>
-        </div>
-      </div> )
+        </MotionDiv>
+      </div>)
   }
 
 
   return (
     <div className='post-grid' >
-      {posts.map((blog) => (
-        <CardComponent key={blog.slug} blog={blog} />
+      {posts.map((blog, index) => (
+        <CardComponent index={index} key={blog.slug} blog={blog} />
       ))}
     </div>
   )

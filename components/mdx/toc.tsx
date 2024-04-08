@@ -128,7 +128,6 @@ const SkeletonLoader = () => {
        <Skeleton className="m-0 list-none w-[90%] h-3"/>
        <Skeleton className="m-0 list-none w-[90%] h-3 ml-4"/>
     </div>
-   
   )
 
 }

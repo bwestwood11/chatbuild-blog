@@ -1,34 +1,21 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { Mdx } from '@/components/mdxComponents'
-import { FormatTime } from '@/lib/utils'
+import { AbsoluteUrl, FormatTime } from '@/lib/utils'
 import Image from 'next/image'
 import { posts } from "#site/content"
 import { DashboardTableOfContents } from '@/components/mdx/toc'
-import ShareModal from '@/components/share-modal'
 import { TracingBeam } from '@/components/ui/tracing-ray'
 import { MotionDiv, MotionHeading, MotionParagraph, MotionSpan } from '@/components/motion'
 import Toolbar from './_components/Toolbar'
+import { loadingVariants } from '@/lib/animations'
 
 type Props = {
   params: {
     slug: string
   }
 }
-const loadingVariants = {
-  initial: {
-    opacity: 0,
-  },
-  animate: {
-    opacity: 1,
-    transition: {
-      duration: 0.5,
-    },
-  },
-  exit: {
-    opacity: 0,
-  },
-};
+
 
 function getPageBySlug(slug: string) {
   console.log(slug)
@@ -131,8 +118,7 @@ export async function generateMetadata({
       title: post.title,
       description: post.description,
       type: "article",
-      // TODO add absolute url
-      url: post.slug,
+      url: AbsoluteUrl(post.slug),
       images: post.absolutecover ? [
         {
           url: post.absolutecover.src,

@@ -3,13 +3,12 @@ import CoverImage from '../../components/coverImage';
 import { Heart, Timer } from 'lucide-react';
 import { Post } from '@/.velite';
 import Link from 'next/link';
-import ShareModal from '../../components/share-modal';
-import Image from 'next/image';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { MotionDiv } from '@/components/motion';
 
-const CardComponent = ({ blog }: { blog: Post }) => {
+const CardComponent = ({ blog,index }: { blog: Post, index:number }) => {
   return (
-    <div className='@container'>
+    <MotionDiv initial={{opacity:0,y:20}} animate={{opacity:1,y:0}} transition={{duration:0.3 * index ,ease:"easeInOut"}} className='@container'>
       <article className="card flex shadow-lg  flex-col @md:flex-row  group justify-between rounded overflow-hidden  bg-card   transition-all duration-300 transform">
         <div className="card_link h-60 @md:w-1/2   ">
           <CoverImage hostedsrc={blog.hostedcover} absolutesrc={blog?.absolutecover?.src} alt={"something helrr"} width={400} height={400} className='w-full -z-10 object-cover h-60 @md:w-1/2  group-hover:h-full dark:group-hover:opacity-30 group-hover:opacity-15 transform duration-300  absolute top-0 ' />
@@ -48,8 +47,7 @@ const CardComponent = ({ blog }: { blog: Post }) => {
           </div>
         </Link>
       </article>
-    </div>
-
+    </MotionDiv>
   );
 }
 
