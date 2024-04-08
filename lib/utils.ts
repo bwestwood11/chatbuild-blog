@@ -12,3 +12,12 @@ export const FormatTime = (date:string) => {
     year: 'numeric',
   })
 }
+
+export const AbsoluteUrl = (path:string) => {
+  const NEXT_PUBLIC_APP_URL = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000/"
+  return `${NEXT_PUBLIC_APP_URL}${path}`
+}
+
+export const FormatProperCasing = (str:string) => {
+  return str.charAt(0).toUpperCase() + str.slice(1)
+}

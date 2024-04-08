@@ -176,7 +176,7 @@ pre::-webkit-scrollbar {
 }
 
 .prose code:not([data-language]) {
-  @apply bg-[#24292e] px-2 italic font-bold rounded-md
+  @apply dark:bg-[#24292e]  px-2 italic font-bold rounded-md
 }
 .prose code:not([data-language])::before,
 .prose code:not([data-language])::after{

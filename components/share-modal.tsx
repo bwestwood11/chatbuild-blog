@@ -4,57 +4,76 @@ import { Button } from "@/components/ui/button"
 import {
     Dialog,
     DialogContent,
-    DialogDescription,
-    DialogFooter,
     DialogHeader,
     DialogTitle,
     DialogTrigger,
 } from "@/components/ui/dialog"
-import {FacebookShareButton, LinkedinShareButton, MailruShareButton, TelegramIcon, TelegramShareButton, TwitterShareButton, WhatsappIcon, WhatsappShareButton} from "react-share"
-import { Icons } from './Icons'
-import { AtSign, Facebook, Linkedin, TwitterIcon } from 'lucide-react'
-import { FaWhatsapp } from "react-icons/fa6";
-
+import {FacebookIcon, FacebookShareButton, LinkedinShareButton, TwitterShareButton, WhatsappIcon, WhatsappShareButton , TwitterIcon, LinkedinIcon, MailruIcon, EmailShareButton, EmailIcon} from "react-share"
+import { Input } from './ui/input'
+import { Share2Icon } from 'lucide-react'
+import { AbsoluteUrl } from '@/lib/utils'
 
 const ShareComponents = [
-   {
-        name: "whatsapp",
-        icon: FaWhatsapp,
-        shareButton: WhatsappShareButton
-    },
     {
-        name: "facebook",
-        icon:   Facebook,
-        shareButton: FacebookShareButton
-    },
-   {
-        name: "twitter",
-        icon: TwitterIcon,
-        shareButton: TwitterShareButton
-    },
+         name: "whatsapp",
+         icon: WhatsappIcon,
+         shareButton: WhatsappShareButton,
+         props: (url: string, title?:string) => ({
+            url,
+            title,
+            separator:"::"
+         })
+     },
+     {
+         name: "facebook",
+         icon:   FacebookIcon,
+         shareButton: FacebookShareButton,
+         props: (url: string, title?:string) => ({
+            url,
+         })
+     },
     {
-        name: "linkedin",
-        icon: Linkedin,
-        shareButton: LinkedinShareButton
-    },
-    {
-        name: "mail",
-        icon: AtSign,   
-        shareButton: MailruShareButton
-    },
-
- ] as const
-
+         name: "twitter",
+         icon: TwitterIcon,
+         shareButton: TwitterShareButton,
+         props: (url: string, title?:string) => ({
+            url,
+            title
+         })
+     },
+     {
+         name: "linkedin",
+         icon: LinkedinIcon,
+         shareButton: LinkedinShareButton,
+         props: (url: string, title?:string) => ({
+            url
+         })
+     },
+     {
+         name: "mail",
+         icon: EmailIcon,   
+         shareButton: EmailShareButton,
+         props: (url: string, title?:string) => ({
+            url,
+            subject:title,
+            body:"Look What i shared with you"
+         })
+     },
+ 
+  ] as const
+ 
 
 type Props = {
-    absoluteLink: string
+    absoluteLink: string,
+    title:string;
 }
 
 const ShareModal = (props: Props) => {
+    const Link = AbsoluteUrl(props.absoluteLink)
     return (
         <Dialog>
             <DialogTrigger asChild>
-                <Button variant="outline">Share with</Button>
+                <Button variant="link" className='rounded-full '><Share2Icon className="hover:text-accent/50"/></Button>
             </DialogTrigger>
             <DialogContent className="sm:max-w-[425px]">
                 <DialogHeader>
@@ -63,10 +82,15 @@ const ShareModal = (props: Props) => {
                 <div className='space-y-3' >
                 <div className="flex w-full justify-between ">
                     {ShareComponents.map((component) => (
-                        <ShareButton key={component.name} Component={component} absoluteLink={props.absoluteLink} />
+                        <ShareButton key={component.name} title={props.title} Component={component} Link={Link} />
                     ))}
                 </div>
                 <p className='text-center'>or share the link</p>
+                <div className="flex w-full justify-between gap-3 ">
+                    <Input value={Link}/>
+                    {/* TODO: Add copy to clipboard */}
+                    <Button variant="default">Copy</Button>
+                </div>
                 </div>
             </DialogContent>
         </Dialog>
@@ -74,18 +98,18 @@ const ShareModal = (props: Props) => {
 }
 
 type ShareProps  = {
-    absoluteLink: string
-    Component:typeof ShareComponents[number]
+    Link: string;
+    Component:typeof ShareComponents[number];
+    title:string;
 }
-const ShareButton = ({Component,absoluteLink}: ShareProps) => {
+
+const ShareButton = ({Component,Link,title}: ShareProps) => {
     return (
-        <Component.shareButton url={absoluteLink} className="mr-2  rounded-full   " style={{border:"1px solid #ffffff78", padding:"9px"}}>
-            <Component.icon className='size-7 !hover:bg-white'/>
+        <Component.shareButton  url={Link} >
+            <Component.icon {...Component.props(Link,title)}  round={true} size={42}  />
         </Component.shareButton>
     )
 }
-
-
 
 
 

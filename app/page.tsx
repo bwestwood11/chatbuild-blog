@@ -1,34 +1,54 @@
 import Link from 'next/link'
 import { ModeToggle } from '@/components/toggle-button'
-import {  posts } from "#site/content"
+import CardComponent from './_components/Card'
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
+import { categories } from '@/lib/constants'
+import { getBlogByCategory } from '@/lib/blogsUtils'
 
 export default function Home() {
   return (
-    <div className="mx-auto max-w-xl py-8">
-      <h1 className="mb-8 text-center text-2xl font-black">Posts</h1>
-      <ModeToggle />
+    <div className="mx-auto container px-5 xl:px-20  py-8">
+      <Tabs defaultValue={categories[0]} >
+        <section className=' py-10'>
+          <h1 className="text-left text-3xl font-black">Posts</h1>
+          <p className=' text-gray-600 mb-10'>Latest news and updates and Help from Chatbuild Ai</p>
+          <TabsList >
+            {categories.map((category) => (
+              <TabsTrigger key={category} value={category} className='capitalize'>{category}</TabsTrigger>
+            ))}
+          </TabsList>
+        </section>
+        {categories.map((category) => (
+          <TabsContent value={category} key={category}>
+            <PostsGrid category={category} />
+          </TabsContent>
+        ))}
+      </Tabs>
+    </div>
+  )
+}
+
+
+const PostsGrid = ({ category }: { category: categories }) => {
+  const posts = getBlogByCategory(category)
+
+  if (posts.length <= 0) {
+    return (
+      <div className='post-grid' >
+        <div className='flex flex-col items-center justify-center py-20 '>
+          <h1 className="text-left text-3xl font-black">No posts found</h1>
+          <p className=' text-gray-600 mb-4'>Latest news and updates and Help from Chatbuild Ai</p>
+        </div>
+      </div> )
+  }
+
+
+  return (
+    <div className='post-grid' >
       {posts.map((blog) => (
-        <article key={blog.slug} className="mb-8">
-          <h2 className="text-xl">
-            <Link href={blog.slug} className="text-blue-700 hover:text-blue-900">
-              {blog.title}
-            </Link>
-          </h2>
-          <time
-            dateTime={blog.date}
-            className="mb-2 block text-xs text-gray-600"
-          >
-            {new Date(blog.date).toLocaleDateString('en-US', {
-              day: 'numeric',
-              month: 'long',
-              year: 'numeric',
-            })}
-          </time>
-          <p className="relative z-10 mt-2 text-sm text-zinc-600 dark:text-zinc-400">
-            {blog.description}
-          </p>
-        </article>
+        <CardComponent key={blog.slug} blog={blog} />
       ))}
     </div>
   )
 }
+
