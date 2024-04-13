@@ -73,7 +73,10 @@ const ShareModal = (props: Props) => {
     return (
         <Dialog>
             <DialogTrigger asChild>
-                <Button variant="link" className='rounded-full '><Share2Icon className="hover:text-accent/50"/></Button>
+                <Button variant="link" className='rounded-full ' aria-label='Share the blog'> 
+                    <span className='sr-only'>Share The Blog</span>
+                    <Share2Icon className="hover:text-accent/50"/>
+                </Button>
             </DialogTrigger>
             <DialogContent className="sm:max-w-[425px]">
                 <DialogHeader>

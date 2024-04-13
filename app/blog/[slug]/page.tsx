@@ -19,7 +19,7 @@ type Props = {
 
 function getPageBySlug(slug: string) {
   console.log(slug)
-  return posts.find(post => post.slug.split("/").pop() === slug)
+  return posts.find(post => post.slug === slug)
 }
 
 export default function Post({ params }: { params: { slug: string } }) {
@@ -58,7 +58,7 @@ export default function Post({ params }: { params: { slug: string } }) {
                 variants={loadingVariants} className=' w-full aspect-video block relative  bg-foreground'>
           {blog.absolutecover && <Image priority fill
             sizes="(min-width: 808px) 50vw, 100vw"
-            src={blog.absolutecover.src} blurDataURL={blog.absolutecover.blurDataURL} alt='image' className='w-full h-full object-cover mb-3 ' />}
+            src={blog.absolutecover.src} blurDataURL={blog.absolutecover.blurDataURL}   alt='image' className='w-full h-full object-cover mb-3 ' />}
           {blog.hostedcover && <Image priority fill
             sizes="(min-width: 808px) 50vw, 100vw"
             src={blog.hostedcover} alt='image' className='w-full h-full object-cover mb-3 ' />}
@@ -118,7 +118,7 @@ export async function generateMetadata({
       title: post.title,
       description: post.description,
       type: "article",
-      url: AbsoluteUrl(post.slug),
+      url: AbsoluteUrl(post.permalink),
       images: post.absolutecover ? [
         {
           url: post.absolutecover.src,

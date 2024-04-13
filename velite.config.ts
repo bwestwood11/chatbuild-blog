@@ -72,7 +72,7 @@ const posts = defineCollection({
   schema: s
     .object({
       title: s.string().max(99),
-      slug: s.path(),
+      slug: s.slug('post'),
       date: s.isodate(),
       updated: s.isodate().optional(),
       absolutecover: s.image().optional(),
@@ -89,7 +89,7 @@ const posts = defineCollection({
       body: s.mdx(),
       category: s.enum(categories)
     })
-    .transform(data => ({ ...data, permalink: `/${data.slug}` }))
+    .transform(data => ({ ...data, permalink: `blog/${data.slug}` }))
 })
 const codeOptions = {
   theme: "github-dark"

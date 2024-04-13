@@ -23,13 +23,14 @@ export function ModeToggle() {
   }
 if(mounted) {
   return (
-  <Button variant='ghost' onClick={toggleTheme}>
+  <Button variant='ghost' aria-label="Toggle theme" onClick={toggleTheme}>
     {theme === "dark" ? <Sun /> : <Moon />}
+    <span className="sr-only">{theme === "dark" ? "Switch to Light mode" : "Switch to Dark mode"}</span>
   </Button>);
 }
 else{
   return (
-    <Button variant='ghost'>
+    <Button variant='ghost' aria-label="Toggle theme">
       <Sun />
     </Button>);
 }

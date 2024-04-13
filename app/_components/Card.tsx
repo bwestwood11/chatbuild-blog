@@ -17,7 +17,7 @@ const CardComponent = ({ blog,index }: { blog: Post, index:number }) => {
           <div className="card__info ">
             <div className='p-6 group-hover:scale-105 transition-all transform  duration-300'>
               <span className="card__category text-xs    font-semibold tracking-widest uppercase text-gray-600">{blog.tags[0]}</span>
-              <h3 className="card__title   text-lg font-medium group-hover:text-accent  ">{blog.title}</h3>
+              <h2 className="card__title   text-lg font-medium group-hover:text-accent  ">{blog.title}</h2>
               <p className='card__description mb-2 hidden md:block  text-sm text-gray-600'>
                 {blog.description}
               </p>
