@@ -137,3 +137,35 @@ p, h1, h2, h3, h4, h5, h6 {
   grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
   grid-gap: 40px;
 }
+
+/* Firefox (uncomment to work in Firefox, although other properties will not work!)  */
+/** {
+  scrollbar-width: thin;
+  scrollbar-color: #54AC35 #FFFFFF;
+}*/
+
+/* Chrome, Edge and Safari */
+*::-webkit-scrollbar {
+  height: 6px;
+  width: 3px;
+}
+*::-webkit-scrollbar-track {
+  border-radius: 6px;
+  background-color: transparent;
+}
+
+
+
+
+*::-webkit-scrollbar-thumb {
+  border-radius: 3px;
+  background-color: #54AC35;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: #62A34B;
+}
+
+*::-webkit-scrollbar-thumb:active {
+  background-color: #62A34B;
+}

@@ -77,6 +77,7 @@ const posts = defineCollection({
       updated: s.isodate().optional(),
       absolutecover: s.image().optional(),
       hostedcover:s.string().optional(),
+      youtube_video:s.string().optional(),
       authors: s.array(s.string()),
       description: s.string().max(999).optional(),
       draft: s.boolean().default(false),

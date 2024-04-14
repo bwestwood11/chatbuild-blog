@@ -7,11 +7,11 @@ type ImagePropswithoutSrc = {
   absolutesrc?: string,
 } & Omit<ImageProps, 'src'>
 
-const CoverImage = ({hostedsrc,absolutesrc, ...props}:ImagePropswithoutSrc) => {
+const CoverImage = ({hostedsrc,absolutesrc, alt, ...props}:ImagePropswithoutSrc) => {
   return (
     <>
-    {hostedsrc && <Image {...props} src={hostedsrc} />}
-    {absolutesrc && <Image {...props} src={absolutesrc} />}
+    {hostedsrc && <Image  alt="Cover Image" {...props} src={hostedsrc} />}
+    {absolutesrc && <Image alt="Cover Image" {...props} src={absolutesrc} />}
     {!hostedsrc && !absolutesrc && <Skeleton/>}
     </>
   )

@@ -1,21 +1,89 @@
-const siteMetadata = {
-    title: 'Next.js Blog With Tailwind CSS and Contentlayer',
-    author: 'CodeBucks',
-    headerTitle: 'Next.js Blog',
-    description: 'A blog created with Next.js, Tailwind.css and contentlayer.',
-    language: 'en-us',
-    theme: 'system', // system, dark or light
-    siteUrl: 'https://blog.chatbuild.io', // your website URL
-    siteLogo: '/logo.png',
-    socialBanner: '/social-banner.png', // add social banner in the public folder
-    email: 'codebucks27@gmail.com', 
-    github: 'https://github.com/codebucks27',
-    twitter: 'https://twitter.com/code_bucks',
-    facebook: 'https://facebook.com',
-    youtube: 'https://youtube.com/codebucks',
-    linkedin: 'https://www.linkedin.com/in/codebucks/',
-    dribbble: 'https://www.dribbble.com',
-    locale: 'en-US',
-  }
-  
-  module.exports = siteMetadata
+import { Metadata } from "next";
+
+export const SEOMETADATA = {
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    title: "Blogs | Blogs For Chatbuild Ai",
+    description:
+      "ChatBuilder.io is a platform that empowers people to easily create and customize chatbot widgets to enhance user experience on their websites.",
+    url: "https://blog.chatbuild.io/",
+    siteName: "ChatBuild.io",
+    images: [
+      {
+        url: "/static/chatbuild_home.webp",
+        width: 800,
+        height: 600,
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Blogs for the chatbuild Ai",
+    description:
+      "ChatBuild.io is a platform that empowers people to easily create and customize chatbot widgets to enhance user experience on their websites.",
+    images: [
+      {
+        url: "https://utfs.io/f/712ac3ae-057c-4499-af93-46b4c4221f92-7d9o2c.png",
+        width: 800,
+        height: 600,
+      },
+    ],
+  },
+  category: "technology",
+  generator: "Next.js",
+  applicationName: "ChatBuild Ai",
+  referrer: "origin-when-cross-origin",
+  keywords: [
+    "How to Add Chatbot ",
+    "Wordpress",
+    "Blogs",
+    "ChatBuilder",
+    "ChatBuilder.io",
+    "Chat widget builder",
+    "Chatbot creator",
+    "Website chatbot",
+    "AI chatbot builder",
+    "Widget development",
+    "Chatbot widget platform",
+    "Conversational AI tool",
+    "Chatbot integration",
+    "User engagement tools",
+    "Website enhancement tools",
+    "Widget customization",
+    "Developer-friendly chatbot",
+    "Chatbot API",
+    "Ai Widget",
+    "How To Add Widget to website",
+    "Chatbot API",
+    "Website assistant",
+    "Interactive chat widget",
+    "AI-powered chatbots",
+    "Custom chatbot solutions",
+    "Engagement widget",
+    "Customer support widget",
+    "Online chatbot creator",
+    "Automated customer service",
+    "Virtual assistant for website",
+    "Chatbot deployment platform",
+    "Conversational UX design",
+    "AI-driven customer interactions",
+    "Website automation tools",
+  ],
+  authors: [{ name: "Brett Westwood" }, { name: "Diwanshu Midha" }],
+  creator: "Brett Westwood",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  robots: {
+    index: true,
+    follow: true,
+    nocache: true,
+  },
+  verification: {},
+} satisfies Metadata;

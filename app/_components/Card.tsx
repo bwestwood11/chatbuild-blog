@@ -9,7 +9,7 @@ import { MotionDiv } from '@/components/motion';
 const CardComponent = ({ blog,index }: { blog: Post, index:number }) => {
   return (
     <MotionDiv initial={{opacity:0,y:20}} animate={{opacity:1,y:0}} transition={{duration:0.3 * index ,ease:"easeInOut"}} className='@container'>
-      <article className="card flex shadow-lg  flex-col @md:flex-row  group justify-between rounded overflow-hidden  bg-card   transition-all duration-300 transform">
+      <article className="card flex shadow-lg  flex-col @md:flex-row h-full  group justify-between rounded overflow-hidden  bg-card   transition-all duration-300 transform">
         <div className="card_link h-60 @md:w-1/2   ">
           <CoverImage hostedsrc={blog.hostedcover} absolutesrc={blog?.absolutecover?.src} alt={"something helrr"} width={400} height={400} className='w-full -z-10 object-cover h-60 @md:w-1/2  group-hover:h-full dark:group-hover:opacity-30 group-hover:opacity-15 transform duration-300  absolute top-0 ' />
         </div>
@@ -23,7 +23,7 @@ const CardComponent = ({ blog,index }: { blog: Post, index:number }) => {
               </p>
               <div className='flex items-center gap-3'>
                 <Avatar>
-                  <AvatarImage src="https://images.unsplash.com/photo-1712282244289-aa73c99f7ee8?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="@shadcn" />
+                  <AvatarImage src="/bwestwood.webp" alt="Brett Michael Westwood" />
                   <AvatarFallback>BW</AvatarFallback>
                 </Avatar>
                 <span className="card__by text-sm  font-semibold">

@@ -18,7 +18,6 @@ type Props = {
 
 
 function getPageBySlug(slug: string) {
-  console.log(slug)
   return posts.find(post => post.slug === slug)
 }
 
@@ -26,7 +25,7 @@ export default function Post({ params }: { params: { slug: string } }) {
   const blog = getPageBySlug(params.slug)
   if (!blog) notFound()
   return (
-    <div className='flex container max-md:px-8 py-8 scroll-m-10 w-full  '>
+    <div className='flex container max-md:px-8 py-8 scroll-m-10 w-full   '>
       <article className="mx-auto flex-1  max-w-3xl  w-full flex flex-col gap-3  ">
         <div className="mb-4 text-left text-foreground">
           <time dateTime={blog.date} className="mb-1 text-xs text-gray-600">
@@ -35,7 +34,7 @@ export default function Post({ params }: { params: { slug: string } }) {
           <MotionHeading initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="text-3xl font-bold mb-3">{blog.title}</MotionHeading>
           <div className='flex gap-3 items-center ' >
             {/* <span>{blog.timeToRead.minutes.toFixed(0)} minutes read</span> */}
-            <Image width={30} height={30} className='rounded-full bg-foreground object-cover size-8 aspect-square ' alt="image" src={"https://images.unsplash.com/photo-1712013839230-15e7928efdab?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"} />
+            <Image width={30} height={30} className='rounded-full bg-foreground object-cover size-8 aspect-square ' alt="Brett Westwood" src={"/bwestwood.webp"} />
             <div className='flex flex-col '>
               <MotionSpan initial="initial"
                 animate="animate"
@@ -68,7 +67,7 @@ export default function Post({ params }: { params: { slug: string } }) {
         </TracingBeam >
         <hr />
         <div>{blog.tags?.map(tag => <span key={tag}>#{tag}</span>)}</div>
-        <Toolbar/>
+        <Toolbar title={blog.title} absoluteShareLink={blog.permalink} youtubeLink={blog.youtube_video}/>
       </article>
 
 

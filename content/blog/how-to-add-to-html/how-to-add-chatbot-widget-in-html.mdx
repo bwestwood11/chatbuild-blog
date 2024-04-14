@@ -1,0 +1,54 @@
+---
+title: Add A Chatbot Widget To Plain Html/Js App
+date: 2024-04-13
+description: Elevate user engagement in your Plain Html/Js app effortlessly with ChatBuild.io's chatbot widget integration. 
+absolutecover: thumbnail.webp
+category: help
+slug: how-to-add-chatbot-widget-in-html
+tags:
+  - productivity
+  - help
+  - chatbot
+  - react
+authors:
+  - Brett Westwood 
+  - Diwanshu
+---
+
+
+## Enhance User Engagement in Your Website with ChatBuild.io Chatbot Widget
+
+Are you looking to boost user engagement on your website? Adding a chatbot widget can be a game-changer, and with ChatBuild.io, the process is incredibly simple and affordable. In this guide, we’ll walk you through the steps to seamlessly integrate a chatbot widget into your website using plain HTML and JavaScript.
+
+### Step 1: Create Your Chatbot In Chatbuild.io
+Start by creating an account on ChatBuild.io. Once logged in, you can easily create a basic chatbot using ChatBuild’s intuitive interface. Define your chatbot’s responses, actions, and appearance to align with your website’s needs. You can also train your bot to improve its responses over time.
+<Image alt="Chatbuild Io Home Page Image" width={500} height={400} className="w-full" src="/static/chatbuild_home.webp"/>
+
+### Step 2: Customize Your Chatbot
+ChatBuild.io offers a range of customization options to ensure your chatbot fits seamlessly into your website’s design. Customize the chatbot’s color scheme, chat bubble style, and avatar to match your website’s branding. And don’t worry, ChatBuild.io doesn’t add any watermarks, so the chatbot will perfectly match your UI.
+
+### Step 3: Copy the Script Tag
+After customizing your chatbot, ChatBuild.io will provide you with a script tag. This script tag is a snippet of code that you’ll need to include in your website to integrate the chatbot. The Script Tag Will Look Something like this:
+
+```html
+<div id="chatbot"></div>
+<script src="https://cdn.jsdelivr.net/gh/bwestwood11/chatbot-widget/bundle/index3.js"></script>
+<script>
+    Chatbot.mount(document.getElementById('chatbot'), {
+        api_key: "your_api_key_will_be_here",
+        theme_color: "#2b9348"
+    })
+    Chatbot.loadCss("https://cdn.jsdelivr.net/gh/bwestwood11/chatbot-widget/bundle/index3.css")
+</script>
+```
+
+### Step 4: Integrate the Script Tag into Your Website
+To integrate the chatbot into your website, open your HTML file and paste the script tag just before the closing `</body>` tag. This will ensure that the chatbot widget is loaded when users access your website.
+<Image width={500} height={400} className="w-full" alt="Script Image" src="/static/script.webp"/>
+
+### Step 5: Enjoy Increased User Engagement
+With your chatbot successfully integrated, sit back and enjoy the benefits. Engage with your users in a whole new way, provide instant support, and gather valuable feedback to enhance your website further.
+
+If You Face Any Issue, You Can Always Contact Us In The Discord or mail at support@chatbuild.io
+
+Integrating a chatbot widget into your website has never been easier thanks to ChatBuild.io. With minimal effort and cost, you can enhance user engagement and provide a more interactive experience for your website visitors. So why wait? Sign up for ChatBuild.io today and take your website to the next level!

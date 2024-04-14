@@ -91,8 +91,8 @@ const ShareModal = (props: Props) => {
                 <p className='text-center'>or share the link</p>
                 <div className="flex w-full justify-between gap-3 ">
                     <Input value={Link}/>
-                    {/* TODO: Add copy to clipboard */}
-                    <Button variant="default">Copy</Button>
+                   
+                    <Button onClick={() => navigator.clipboard.writeText(Link)} variant="default">Copy</Button>
                 </div>
                 </div>
             </DialogContent>
